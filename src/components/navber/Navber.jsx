@@ -1,7 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/demo_logo.png";
+import getAuth from "../../hooks/getAuth";
 
 const Navber = () => {
+  const { user, logOut } = getAuth();
+
+  const handleSingOut = () => {
+    logOut()
+  }
+
   const navitems = (
     <div className="flex text-lg gap-4 font-medium items-center">
       <li>
@@ -48,7 +55,17 @@ const Navber = () => {
         <ul className=" menu-horizontal px-1">{navitems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="px-5 rounded-md font-Playfair py-2 border-[1px] text-[#223322] font-medium text-lg">Sing In</a>
+        {user && user?.email ? (
+          <a onClick={handleSingOut} className="px-5 rounded-md hover:opacity-60 cursor-pointer font-Playfair py-2 border-[1px] text-[#223322] font-medium text-lg">
+            Sing Out
+          </a>
+        ) : (
+          <Link to={"/login"}>
+            <a className="px-5 rounded-md hover:opacity-60 cursor-pointer font-Playfair py-2 border-[1px] text-[#223322] font-medium text-lg">
+              Sing In
+            </a>
+          </Link>
+        )}
       </div>
     </div>
   );

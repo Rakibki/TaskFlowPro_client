@@ -4,7 +4,7 @@ const DashBoardMenu = () => {
   return (
     <ul>
         <li><NavLink to={"/dashboard/addNewTask"}>Add New Task</NavLink></li>
-        <li>wto</li>
+        <li><NavLink to={"/dashboard/previousTasks"}>Previous Tasks</NavLink></li>
     </ul>
   )
 }

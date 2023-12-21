@@ -5,6 +5,7 @@ import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import AddNewTask from "../pages/dashboard/AddNewTask";
 import DashboardLayout from "../layout/dashboardLayout/DashboardLayout";
+import PreviousTasks from "../pages/dashboard/PreviousTasks";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "addNewTask",
         element: <AddNewTask />
+      },
+      {
+        path: "previousTasks",
+        element: <PreviousTasks />
       }
     ]
   }

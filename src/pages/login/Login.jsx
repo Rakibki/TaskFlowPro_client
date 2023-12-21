@@ -3,14 +3,14 @@ import SocailLogin from "../../components/socailLogin/SocailLogin";
 import getAuth from "../../hooks/getAuth";
 
 const Login = () => {
-  const {createUser} = getAuth();
+  const {loginUser} = getAuth();
   const naviagte = useNavigate()
   
   const handleLogin = async (e) => {
     e.preventDefault();
     const password = e.target.password.value;
     const email = e.target.email.value;
-    await createUser(email, password)
+    await loginUser(email, password)
     naviagte("/dashboard/addNewTask")
   }
 
