@@ -1,4 +1,5 @@
 import bannerImage from "../../assets/images/her_micronet.jpg";
+import {Link} from "react-router-dom"
 
 const Banner = () => {
   return (
@@ -16,9 +17,11 @@ const Banner = () => {
         </p>
 
         <div className="mt-3">
-          <a className="px-5 rounded-md font-Playfair bg-[#d88531] py-2 border-[1px] text-white cursor-pointer font-medium text-lg">
-            Let’s Explore
-          </a>
+          <Link to={"/login"}>
+            <a className="px-5 rounded-md font-Playfair bg-[#d88531] py-2 border-[1px] text-white cur font-medium text-lg">
+              Let’s Explore
+            </a>
+          </Link>
         </div>
       </div>
       <div>
