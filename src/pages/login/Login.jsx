@@ -1,16 +1,17 @@
-import {Link} from "react-router-dom" 
+import {Link, useNavigate} from "react-router-dom" 
 import SocailLogin from "../../components/socailLogin/SocailLogin";
 import getAuth from "../../hooks/getAuth";
 
 const Login = () => {
   const {createUser} = getAuth();
+  const naviagte = useNavigate()
   
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const password = e.target.password.value;
     const email = e.target.email.value;
-    console.log({password, email});
-    // createUser()
+    await createUser(email, password)
+    naviagte("/dashboard/addNewTask")
   }
 
   return (

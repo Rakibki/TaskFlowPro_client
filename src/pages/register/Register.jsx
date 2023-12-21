@@ -1,16 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocailLogin from "../../components/socailLogin/SocailLogin";
+import UploadeImage from "../../utils/uploadeImage";
+import getAuth from "../../hooks/getAuth";
 
 const Register = () => {
+  const {createUser, user, updateUser} = getAuth();
+  const naviagte = useNavigate()
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const fname = e.target.fName.value;
     const lname = e.target.lName.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
     const imagefile = e.target.image.files[0];
 
+    const image = await UploadeImage(imagefile)
+    const fullName= `${fname}${" "}${lname}`
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    await createUser(email, password)
+    await updateUser(fullName, image)
+    naviagte("/dashboard/addNewTask")
   } 
 
   return (

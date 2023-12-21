@@ -3,6 +3,8 @@ import MainLayout from "../layout/mainLayout/MainLayout";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
+import AddNewTask from "../pages/dashboard/AddNewTask";
+import DashboardLayout from "../layout/dashboardLayout/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,16 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "addNewTask",
+        element: <AddNewTask />
+      }
+    ]
+  }
 ]);
 
 export default router;
