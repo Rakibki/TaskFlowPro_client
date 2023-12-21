@@ -6,10 +6,22 @@ import PageTitle from "../../components/pageTitle/PageTitle";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
+import EditTask from "../../components/modals/editTask/EditTask";
+import { useState } from "react";
 
 const PreviousTasks = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = getAuth();
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [updatedTask, setUpdatedTask] = useState({})
+
+  function afterOpenModal() {
+    subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   const { isPending, data, refetch } = useQuery({
     queryKey: ["my-task-list"],
@@ -37,8 +49,9 @@ const PreviousTasks = () => {
     }
   };
 
-  const handleEdit = (id) => {
-    alert(id)
+  const handleEdit = (task) => {
+    setIsOpen(true)
+    setUpdatedTask(task)
   }
 
   if (isPending) <Loader />;
@@ -77,7 +90,7 @@ const PreviousTasks = () => {
                     >
                       <IoCloseSharp />
                     </button>
-                    <button onClick={() => handleEdit(task?._id)} className="px-4 rounded-md font-Playfair bg-[#d88531] py-2 border-[1px] text-white cur font-medium text-lg">
+                    <button onClick={() => handleEdit(task)} className="px-4 rounded-md font-Playfair bg-[#d88531] py-2 border-[1px] text-white cur font-medium text-lg">
                       <FaRegEdit />
                     </button>
                   </td>
@@ -87,6 +100,7 @@ const PreviousTasks = () => {
           </tbody>
         </table>
       </div>
+      <EditTask refetch={refetch} updatedTask={updatedTask} openModal={handleEdit} modalIsOpen={modalIsOpen} afterOpenModal={afterOpenModal} closeModal={closeModal} />
     </div>
   );
 };
