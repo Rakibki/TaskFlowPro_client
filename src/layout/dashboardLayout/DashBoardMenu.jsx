@@ -1,10 +1,12 @@
-import {NavLink} from "react-router-dom"
+import DashboardNavItem from "../../components/dashboardNavItem/DashboardNavItem"
+import { MdAddChart } from "react-icons/md";
+import { CiViewList } from "react-icons/ci";
 
 const DashBoardMenu = () => {
   return (
     <ul>
-        <li><NavLink to={"/dashboard/addNewTask"}>Add New Task</NavLink></li>
-        <li><NavLink to={"/dashboard/previousTasks"}>Previous Tasks</NavLink></li>
+        <DashboardNavItem text={"Add New Task"} Icon={MdAddChart} location={"/dashboard/addNewTask"} />
+        <DashboardNavItem text={"Previous Tasks"} Icon={CiViewList} location={"/dashboard/previousTasks"} />
     </ul>
   )
 }

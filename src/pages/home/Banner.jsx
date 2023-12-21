@@ -1,11 +1,11 @@
 import bannerImage from "../../assets/images/her_micronet.jpg";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div className="grid mt-16 items-center grid-cols-2">
-      <div>
-        <h1 className="text-6xl mb-4 font-semibold">
+    <div className="md:flex-row flex-col flex md:p-6 p-10 mt-10 items-center">
+      <div className="md:order-first order-2">
+        <h1 className="text-3xl md:mt-0 mt-6 md:text-6xl mb-4 font-semibold">
           Manage work <span className="text-[#d88531]">Efficiently.</span>
         </h1>
         <h4 className="text-2xl font-semibold mb-2">
@@ -24,7 +24,8 @@ const Banner = () => {
           </Link>
         </div>
       </div>
-      <div>
+
+      <div className="flex justify-center w-full">
         <img src={bannerImage} alt="" />
       </div>
     </div>

@@ -6,6 +6,9 @@ import Register from "../pages/register/Register";
 import AddNewTask from "../pages/dashboard/AddNewTask";
 import DashboardLayout from "../layout/dashboardLayout/DashboardLayout";
 import PreviousTasks from "../pages/dashboard/PreviousTasks";
+import Blog from "../pages/blog/Blog";
+import Pricing from "../pages/Pricing/Pricing";
+import ChooseMe from "../pages/chooseMe/ChooseMe";
 
 const router = createBrowserRouter([
   {
@@ -17,12 +20,24 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/pricing",
+        element: <Pricing />,
+      },
+      {
         path: "/login",
         element: <Login />,
       },
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/chooseMe",
+        element: <ChooseMe />,
       },
     ],
   },
@@ -32,14 +47,14 @@ const router = createBrowserRouter([
     children: [
       {
         path: "addNewTask",
-        element: <AddNewTask />
+        element: <AddNewTask />,
       },
       {
         path: "previousTasks",
-        element: <PreviousTasks />
-      }
-    ]
-  }
+        element: <PreviousTasks />,
+      },
+    ],
+  },
 ]);
 
 export default router;

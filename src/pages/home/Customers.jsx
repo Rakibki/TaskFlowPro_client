@@ -3,7 +3,7 @@ import clients from "../../assets/images/clients-300x84.png";
 
 const Customers = () => {
   return (
-    <div className="grid mt-6 items-center px-10 bg-gradient-to-r from-[#23c4ba] to-blue-500 w-full grid-cols-3">
+    <div className="md:grid mt-6 py-10 items-center px-10 bg-gradient-to-r from-[#23c4ba] to-blue-500 w-full grid-cols-3">
       <div className="col-span-2">
         <h1 className="text-4xl font-semibold mb-3">
           We love our customers and they love us too.
@@ -19,7 +19,7 @@ const Customers = () => {
         </div>
       </div>
       <div className="col-span-1">
-        <img src={happy_girl} alt="" />
+        <img className="w-full" src={happy_girl} alt="" />
       </div>
     </div>
   );
