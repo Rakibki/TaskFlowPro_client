@@ -1,15 +1,24 @@
-import {AiOutlineGoogle, AiFillGithub} from "react-icons/ai"
-
+import { AiOutlineGoogle, AiFillGithub } from "react-icons/ai";
+import getAuth from "../../hooks/getAuth";
+import {useNavigate} from "react-router-dom"
 
 const SocailLogin = () => {
+  const { loginWithGoogle, loginWithGithub, user } = getAuth();
+  const navigate = useNavigate()
 
-    const hanldeGoogle = () => {
-        alert("goolr")
-    }
+  const hanldeGoogle = () => {
+    loginWithGoogle().then(() => {
+      navigate("/dashboard/addNewTask");
+    });
+  };
 
-    const handleGithub = () => {
-        alert("github")
-    }
+  const handleGithub = () => {
+    loginWithGithub().then(() => {
+      navigate("/dashboard/addNewTask");
+    });
+  };
+
+  console.log(user);
 
   return (
     <div className="md:w-[40%] w-[60%] relative">

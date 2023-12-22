@@ -5,11 +5,13 @@ import PageTitle from "../../components/pageTitle/PageTitle";
 import getAuth from "../../hooks/getAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import {useNavigate} from "react-router-dom"
 
 const AddNewTask = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = getAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +20,7 @@ const AddNewTask = () => {
       userEmail: user?.email,
       title: e.target.title.value,
       desc: e.target.desc.value,
+      status: "ongoingTasks",
       priority: e.target.priority.value,
       deadlines: new Date(startDate).toLocaleDateString(),
     };
@@ -33,6 +36,7 @@ const AddNewTask = () => {
         progress: undefined,
         theme: "light",
       });
+      navigate("/dashboard/previousTasks")
     }
   };
 

@@ -1,8 +1,9 @@
-import {IoIosSearch} from "react-icons/io"
+import { IoIosSearch } from "react-icons/io";
 import getAuth from "../../hooks/getAuth";
+import {Link} from "react-router-dom"
 
 const DashboardNavber = () => {
-    const {user} = getAuth()
+  const { user } = getAuth();
   return (
     <div>
       <div className="w-full py-2 flex justify-between">
@@ -19,15 +20,17 @@ const DashboardNavber = () => {
           </div>
         </div>
         <div className="flex gap-2 items-center">
-        <div className="flex ml-2 flex-col">
+          <div className="flex ml-2 flex-col">
             <h2 className="">{user?.displayName}</h2>
           </div>
           <div className="w-[45px] overflow-hidden h-[45px]">
-            <img
-              className="w-full h-full rounded-full"
-              src={user?.photoURL}
-              alt=""
-            />
+            <Link to={"/dashboard/profile"}>
+              <img
+                className="w-full h-full rounded-full"
+                src={user?.photoURL}
+                alt=""
+              />
+            </Link>
           </div>
         </div>
       </div>

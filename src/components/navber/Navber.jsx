@@ -1,13 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/demo_logo.png";
 import getAuth from "../../hooks/getAuth";
+import Loader from "../loader/Loader";
 
 const Navber = () => {
-  const { user, logOut } = getAuth();
+  const { user, logOut, loadding } = getAuth();
 
   const handleSingOut = () => {
     logOut();
   };
+
+  if(loadding) <Loader />
 
   const navitems = (
     <div className="flex text-lg gap-5 font-medium items-center">
@@ -92,7 +95,7 @@ const Navber = () => {
         <ul className=" menu-horizontal px-1">{navitems}</ul>
       </div>
       <div className="navbar-end">
-        {user && user?.email ? (
+        {user ? (
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="w-12 m-1">
               <img

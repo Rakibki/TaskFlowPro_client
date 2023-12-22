@@ -9,6 +9,7 @@ import PreviousTasks from "../pages/dashboard/PreviousTasks";
 import Blog from "../pages/blog/Blog";
 import Pricing from "../pages/Pricing/Pricing";
 import ChooseMe from "../pages/chooseMe/ChooseMe";
+import Profile from "../components/profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "previousTasks",
         element: <PreviousTasks />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
       },
     ],
   },

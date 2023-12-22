@@ -27,10 +27,10 @@ const Footer = () => {
         <a className="link link-hover">Press kit</a>
       </nav>
       <nav>
-        <header className="footer-title">Legal</header>
-        <a className="link link-hover">Terms of use</a>
-        <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
+        <header className="footer-title">social media</header>
+        <a href="https://google.com" className="link link-hover">Google</a>
+        <a href="https://www.linkedin.com" className="link link-hover">linkedin</a>
+        <a href="https://www.instagram.com" className="link link-hover">instagram</a>
       </nav>
     </footer>
   );
