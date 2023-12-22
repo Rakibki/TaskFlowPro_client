@@ -28,7 +28,7 @@ const PreviousTasks = () => {
     setIsOpen(false);
   }
 
-  const { isPending, data, refetch } = useQuery({
+  const { isPending, refetch } = useQuery({
     queryKey: ["my-task-list"],
     enabled: !!user?.email,
     queryFn: async () => {
@@ -43,6 +43,23 @@ const PreviousTasks = () => {
       setCompletedTasks(completedTasks);
     },
   });
+
+  const handleConplate = async (id) => {
+    const res = await axiosSecure.put(`/taskConplate/${id}`);
+    if (res?.data) {
+      refetch();
+      toast.success("Task completed!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
 
   const handleDelete = async (id) => {
     const res = await axiosSecure.delete(`/task/${id}`);
@@ -129,6 +146,12 @@ const PreviousTasks = () => {
                         >
                           <FaRegEdit />
                         </button>
+                        <button
+                          onClick={() => handleConplate(task?._id)}
+                          className="px-4 rounded-md font-Playfair bg-[#d88531] py-2 border-[1px] text-white cur font-medium text-lg"
+                        >
+                          Conplate
+                        </button>
                       </td>
                     </tr>
                   );
@@ -174,6 +197,13 @@ const PreviousTasks = () => {
                           className="px-4 rounded-md font-Playfair bg-[#d88531] py-2 border-[1px] text-white cur font-medium text-lg"
                         >
                           <FaRegEdit />
+                        </button>
+
+                        <button
+                          onClick={() => handleConplate(task?._id)}
+                          className="px-4 rounded-md font-Playfair bg-[#d88531] py-2 border-[1px] text-white cur font-medium text-lg"
+                        >
+                          Conplate
                         </button>
                       </td>
                     </tr>
